@@ -43,14 +43,19 @@ export const all = () => {
   if (on === 'hover') delete options.onToggle;
 
   return (
-    <Popover {...options}>
-      <div style={{ width: 100 }} className="mx-6 my-6">
-        <Text>Popup</Text>
-        <Button className="mt-4" appearance="primary" onClick={action('button clicked inside popover')}>
-          Click
-        </Button>
-      </div>
-    </Popover>
+    <div className="mx-12 my-12">
+      <Popover {...options}>
+        <div style={{ width: 100 }} className="mx-6 my-6">
+          <div>Popup</div>
+          <div>Popup</div>
+          <div>Popup</div>
+          <div>Popup</div>
+          <Button className="mt-4" appearance="primary" onClick={() => alert('button clicked inside popover')}>
+            Click
+          </Button>
+        </div>
+      </Popover>
+    </div>
   );
 };
 
