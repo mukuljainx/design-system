@@ -118,8 +118,10 @@ export const Popover = (props: PopoverProps) => {
   );
 
   const PopoverWrapper = (
+    // <div>
     <div data-test="DesignSystem-Popover" className={classes} data-layer={true}>
       {children}
+      {/* </div> */}
     </div>
   );
 

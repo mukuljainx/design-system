@@ -235,21 +235,28 @@ export class PopperWrapper extends React.Component<PopperWrapperProps, IState> {
    * @returns {object} Position object
    */
   private getPopupPosition = (position: keyof typeof Position) => {
-    const { offset } = this.props;
+    const { offset, placement } = this.props;
     const offSetMap = {
       small: 2,
       medium: 4,
       large: 8,
     };
 
+    let verticalOffset = offSetMap[offset]!;
+    let horizontalOffset = 0;
+
+    if (['left', 'right'].includes(placement)) {
+      horizontalOffset = verticalOffset;
+      verticalOffset = 0;
+    }
     // TODO: check about the availability of refs
     return getPosition(
       position,
       this.triggerRef.current!,
       this.popupRef.current!,
       {
-        vertical: offSetMap[offset]!,
-        horizontal: 0,
+        vertical: verticalOffset,
+        horizontal: horizontalOffset,
       },
       !!this.props.appendToBody
     );
